@@ -115,6 +115,20 @@ export function postArticleAPI(payload) {
         description: payload.description,
       });
       dispatch(setLoading(false));
+    } else if (payload.video === "" && payload.image === "") {
+      addDoc(collection(db, "articles"), {
+        actor: {
+          description: payload.user.email,
+          title: payload.user.displayName,
+          date: payload.timestamp,
+          image: payload.user.photoURL,
+        },
+        video: "",
+        sharedImage: "",
+        comments: 0,
+        description: payload.description,
+      });
+      dispatch(setLoading(false));
     }
   };
 }

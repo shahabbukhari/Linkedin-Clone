@@ -130,8 +130,10 @@ const Main = (props) => {
                     <a>
                       {!article.sharedImage && article.video ? (
                         <ReactPlayer width="100%" url={article.video} />
+                      ) : article.sharedImage ? (
+                        <img src={article.sharedImage} alt="" />
                       ) : (
-                        <img src={article.sharedImage} alt="nature" />
+                        ""
                       )}
                     </a>
                   </SharedImg>
